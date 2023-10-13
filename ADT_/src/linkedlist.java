@@ -72,13 +72,50 @@ public boolean empty() {
 }
 public boolean search(T e) {
 	Node<T> tmp=head;
-	Node<T>ne= new Node<T>(e);
+	Node<T>Searchdata= new Node<T>(e);
 	while(tmp!=null) {
-		if(((Contact)tmp.data).getContactName()==((Contact)ne.data).getContactName()) 
+		if(((Contact)tmp.data).getContactName()==((Contact)Searchdata.data).getContactName()) 
 			return true;
 		tmp=tmp.next;}
 	return false;
 }
+public boolean searchbyeamil(T e) {
+	Node<T> tmp=head;
+	Node<T>Searchdata= new Node<T>(e);
+	while(tmp!=null) {
+		if(((Contact)tmp.data).getEmailAddress()==((Contact)Searchdata.data).getEmailAddress()) 
+			return true;
+		tmp=tmp.next;}
+	return false;
+}
+public boolean searchbyAdress(T e) {
+	Node<T> tmp=head;
+	Node<T>Searchdata= new Node<T>(e);
+	while(tmp!=null) {
+		if(((Contact)tmp.data).getAddress()==((Contact)Searchdata.data).getAddress()) 
+			return true;
+		tmp=tmp.next;}
+	return false;
+}
+public boolean searchbyBirthday(T e) {
+	Node<T> tmp=head;
+	Node<T>Searchdata= new Node<T>(e);
+	while(tmp!=null) {
+		if(((Contact)tmp.data).getBirthday()==((Contact)Searchdata.data).getBirthday()) 
+			return true;
+		tmp=tmp.next;}
+	return false;
+}
+public boolean searchbyphone(T e) {
+	Node<T> tmp=head;
+	Node<T>Searchdata= new Node<T>(e);
+	while(tmp!=null) {
+		if(((Contact)tmp.data).getPhoneNumber()==((Contact)Searchdata.data).getPhoneNumber()) 
+			return true;
+		tmp=tmp.next;}
+	return false;
+}
+
 
 
 }

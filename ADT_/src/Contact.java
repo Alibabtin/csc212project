@@ -1,6 +1,6 @@
-import javax.imageio.plugins.tiff.ExifGPSTagSet;
+import java.util.Scanner;
 
-public class Contact <T>  {
+public class Contact implements Comparable<Contact>{
 private String ContactName;
 private int PhoneNumber;
 private String EmailAddress;
@@ -8,40 +8,14 @@ private String Address;
 private int Birthday;
 private String Note;
 
-public void add(T e) {
-	
-	
-	
-}
-public int compareTo(Contact<T> o) {
-	int x=ContactName.length();
-	int z;
-	int y=o.getContactName().length();
-	
-	int compare=0;
-	if(x>y)
-		compare=x;
-	else
-		compare=y;
-	try {
-	for(int i=0;i<compare;i++) {
-		z=o.ContactName.charAt(i)-ContactName.charAt(i);
-			if(z>0)
-				return z;
-			else if(z<0)
-				 return z;}
-					}catch (StringIndexOutOfBoundsException e) {
-				 
-						if(x>y) { 
-					 System.out.println("the firist one is bigger");}
-				 else {
-					 System.out.println("secend one is bigger");
-					 }
-				 
-					}return 0;
-	
+
+
+
+public int compareTo(Contact o) {
+	return ContactName.compareTo(o.ContactName);
 	
 }
+
 public Contact(String contactName, int phoneNumber, String emailAddress, String address, int birthday, String note) {
 	ContactName = contactName;
 	PhoneNumber = phoneNumber;
@@ -51,6 +25,8 @@ public Contact(String contactName, int phoneNumber, String emailAddress, String 
 	Note = note;
 }
 
+
+public Contact() {};
 
 
 

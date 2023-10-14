@@ -139,6 +139,7 @@ public void menu() {
 		}
 		else {
 			System.out.println("contact doesnt exist");
+
 		}
 		
 			
@@ -147,7 +148,15 @@ public void menu() {
 			break;
 		case 5:
 			break;
-		case 6:
+			
+		case 6: System.out.println("Enter the first name:");
+			String tmpfirst = input.next();
+			if(tmpfirst == null) 
+				System.out.println("no name was entered");
+			
+			else
+				pb.print_first(tmpfirst);
+			
 			break;
 		case 7:
 			break;
@@ -266,6 +275,50 @@ public Contact addcontact() {
 Contact c=new Contact(input.next(),input.nextInt(),input.next(),input.next(),input.next(),input.next());
 return c;
 	
+}
+
+public String extractfirst(String fullname) { // this method is to extract each first name form the list of contact
+	
+	int index = 0;
+    char currentChar = fullname.charAt(index);
+    String firstname = "";
+
+    while (currentChar != ' ' && index < fullname.length()) {
+        firstname += currentChar;
+        index++;
+        if (index < fullname.length()) {
+            currentChar = fullname.charAt(index);
+        }
+    }
+
+    return firstname;
+	
+}
+
+public void print_first(String first_name) {
+	int found = 0;
+	if(LinkListConatact.empty()) { // check if empty
+		System.out.println("no contacts are in");
+		return;
+	}
+	
+	LinkListConatact.findfirst();
+	while(LinkListConatact.current!=null) {
+		
+		if(extractfirst(LinkListConatact.retreive().getContactName()).equalsIgnoreCase(first_name)) {
+			if(found == 0) { // this if is used so the print will work only once
+				System.out.println("Contacts found!");
+			}
+			System.out.println(LinkListConatact.retreive().toString());
+			found++;
+		}
+		
+		LinkListConatact.findnext();
+	}
+	
+	if(found == 0) { // if found = 0 then there is no matching first name
+		System.out.println("Contacts not found!");
+	}
 }
 
 }

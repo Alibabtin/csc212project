@@ -13,18 +13,7 @@ public phonebook() {
 	LinkListEvent = new linkedlist<>();
 }
 
-public Contact addcontact() {
-	 
-	System.out.println("enter the contact name");
-	System.out.println("enter the contact phone number");
-	System.out.println("enter the contact email address");
-	System.out.println("enter the contact addresss");
-	System.out.println("enter the contact birthday");
-	System.out.println("enter the contact notes for contact");
-Contact c=new Contact(input.next(),input.nextInt(),input.next(),input.next(),input.next(),input.next());
-return c;
-	
-}
+
 
 public void searchcontact(phonebook pbb) {
 	int select; // new integer for switch
@@ -132,13 +121,27 @@ public void menu() {
 		select=input.nextInt();
 		
 		switch(select) {
-		case 1: pb.LinkListConatact.insert(addcontact());
-			
+		case 1: 
+			pb.LinkListConatact.insert(addcontact());
 			
 			break;
+			
 		case 2: searchcontact(pb);
+		
 			break;
-		case 3:
+			
+		case 3: System.out.println("name of contact");
+		String tmpname = input.next();
+		Contact tmpcontact = pb.searcbyname(tmpname);
+		if (tmpcontact != null) {
+			pb.delete(tmpcontact);
+			System.out.println("contacts deleted");
+		}
+		else {
+			System.out.println("contact doesnt exist");
+		}
+		
+			
 			break;
 		case 4:
 			break;
@@ -225,5 +228,44 @@ public linkedlist<Contact> searchbyBirthday(String Searchdata, int Birthcount) {
 	return Birthlist;
 }
 
+public void delete(Contact contact_to_delete) {
+	LinkListConatact.findfirst();
+	while(LinkListConatact.current!=null) {
+		
+		if(LinkListConatact.retreive().compareTo(contact_to_delete) == 0) {
+			LinkListConatact.remove();
+		}
+		LinkListConatact.findnext();
+	}
+	
+	if(LinkListEvent.empty()) { // no events to delete
+		return;
+	}
+	
+	LinkListEvent.findfirst();
+	
+	while(LinkListEvent.current!= null) { // events to delete
+		if(LinkListEvent.retreive().getContactinvolved().equals(contact_to_delete.getContactName())) {
+			LinkListEvent.remove();
+		}
+		
+		LinkListEvent.findnext();
+	}
+	
+	
+}
+
+public Contact addcontact() {
+	 
+	System.out.println("enter the contact name");
+	System.out.println("enter the contact phone number");
+	System.out.println("enter the contact email address");
+	System.out.println("enter the contact addresss");
+	System.out.println("enter the contact birthday");
+	System.out.println("enter the contact notes for contact");
+Contact c=new Contact(input.next(),input.nextInt(),input.next(),input.next(),input.next(),input.next());
+return c;
+	
+}
 
 }

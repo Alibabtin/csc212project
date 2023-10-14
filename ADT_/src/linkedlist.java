@@ -1,53 +1,94 @@
 
-public class linkedlist <T> implements list <T>{
+public class linkedlist <T>  {
 public Node<T> head;
 public Node<T> current;
 public linkedlist() {
 	head=current=null;
 }
-@Override
+
 public void findfirst() {
 	current=head;
 	
 }
-@Override
+
 public void findnext() {
 	current=current.next;
 	
 }
-@Override
+
 public T retreive() {
 	
 	return current.data;
 }
-@Override
+
 public void update(T e) {
 	current.data=e;
 	
 }
-@Override
-public void insert(T e) {
-	Node<T> tmp;
-	if(search(e)) {
-		System.out.println("the contact is there");
-		return ;}
-	if(head==null)
-		head=current=new Node<T>(e);
+
+public void InsertC(Contact ndata) {//here
+	Node<T> tmp=new Node(ndata);
+	if(head==null)head=current=tmp;
+	if(((Contact)tmp.getData()).compareTo(((Contact)head.getData()))>0) {
+		tmp.setNext(head);
+		head=tmp;return;}
 	else {
-		tmp=current.next;
-		current.next=new Node<T>(e);
-		current=current.next;
-		current.next=tmp;
 		
-	}
+			Node<T> pre=head;
+			current=head.next;
+			while(current!=null) {
+				if(((Contact)tmp.getData()).compareTo(((Contact)head.getData()))<0) {
+				tmp.setNext(current);
+				pre.setNext(tmp);
+				current=tmp;return;}
+				
+				pre=current;
+				current=current.next;
+				
+			}if(current==null) {
+				pre.setNext(tmp);
+				current=tmp;
+			}return;
+		
+		
 	
-}
-@Override
+}}
+public void InsertE(Event ndata) {//here
+	Node<T> tmp=new Node(ndata);
+	if(head==null)head=current=tmp;
+	if(((Event)tmp.getData()).compareTo(((Event)head.getData()))>0) {
+		tmp.setNext(head);
+		head=tmp;return;}
+	else {
+		
+			Node<T> pre=head;
+			current=head.next;
+			while(current!=null) {
+				if(((Event)tmp.getData()).compareTo(((Event)head.getData()))<0) {
+				tmp.setNext(current);
+				pre.setNext(tmp);
+				current=tmp;return;}
+				
+				pre=current;
+				current=current.next;
+				
+			}if(current==null) {
+				pre.setNext(tmp);
+				current=tmp;
+			}return;
+		
+		
+	
+}}
+
+
 public void remove() {
-	Node<T> tmp=head;
+	if(empty())
+		return;
 	if(head==current) {
 		head=head.next;
 	}else {
+		Node tmp=head;
 		while(tmp.next!=current) {
 			tmp=tmp.next;
 		}
@@ -57,63 +98,57 @@ public void remove() {
 		current=head;
 	else
 		current=current.next;
+	
 }
-@Override
+
 public boolean full() {
 	return false;
+	
 }
-@Override
+
+
+
 public boolean last() {
 	return current.next==null;
 }
-@Override
+
 public boolean empty() {
 	return head==null;
 }
-public boolean search(T e) {
+
+
+public boolean searchC(T C) {
 	Node<T> tmp=head;
-	Node<T>Searchdata= new Node<T>(e);
+	Node<T>Searchdata= new Node<T>(C);
+	if(head==null) {
+		return false;
+	}
 	while(tmp!=null) {
-		if(((Contact)tmp.data).getContactName()==((Contact)Searchdata.data).getContactName()) 
+		if((((Contact)Searchdata.getData()).getContactName()).compareTo(((Contact)tmp.getData()).getContactName())==0)
 			return true;
 		tmp=tmp.next;}
 	return false;
 }
-public boolean searchbyeamil(T e) {
+
+public boolean searchE(T C) {
 	Node<T> tmp=head;
-	Node<T>Searchdata= new Node<T>(e);
+	Node<T>Searchdata= new Node<T>(C);
+	if(head==null) {
+		return false;
+	}
 	while(tmp!=null) {
-		if(((Contact)tmp.data).getEmailAddress()==((Contact)Searchdata.data).getEmailAddress()) 
+		if((((Event)Searchdata.getData()).getTitle()).compareTo(((Event)tmp.getData()).getTitle())==0)
 			return true;
 		tmp=tmp.next;}
 	return false;
 }
-public boolean searchbyAdress(T e) {
-	Node<T> tmp=head;
-	Node<T>Searchdata= new Node<T>(e);
-	while(tmp!=null) {
-		if(((Contact)tmp.data).getAddress()==((Contact)Searchdata.data).getAddress()) 
-			return true;
-		tmp=tmp.next;}
-	return false;
-}
-public boolean searchbyBirthday(T e) {
-	Node<T> tmp=head;
-	Node<T>Searchdata= new Node<T>(e);
-	while(tmp!=null) {
-		if(((Contact)tmp.data).getBirthday()==((Contact)Searchdata.data).getBirthday()) 
-			return true;
-		tmp=tmp.next;}
-	return false;
-}
-public boolean searchbyphone(T e) {
-	Node<T> tmp=head;
-	Node<T>Searchdata= new Node<T>(e);
-	while(tmp!=null) {
-		if(((Contact)tmp.data).getPhoneNumber()==((Contact)Searchdata.data).getPhoneNumber()) 
-			return true;
-		tmp=tmp.next;}
-	return false;
+
+public void display() {
+	Node d=head;
+	while(d.next!=null) {
+		System.out.println(d.data+"_______");
+		d=d.next;
+	}
 }
 
 

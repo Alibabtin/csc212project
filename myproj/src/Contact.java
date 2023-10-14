@@ -6,7 +6,7 @@ private String ContactName;
 private int PhoneNumber;
 private String EmailAddress;
 private String Address;
-private int Birthday;
+private String Birthday;
 private String Note;
 
 
@@ -17,7 +17,7 @@ public int compareTo(Contact o) {
 	
 }
 
-public Contact(String contactName, int phoneNumber, String emailAddress, String address, int birthday, String note) {
+public Contact(String contactName, int phoneNumber, String emailAddress, String address, String birthday, String note) {
 	ContactName = contactName;
 	PhoneNumber = phoneNumber;
 	EmailAddress = emailAddress;
@@ -55,10 +55,10 @@ public String getAddress() {
 public void setAddress(String address) {
 	Address = address;
 }
-public int getBirthday() {
+public String getBirthday() {
 	return Birthday;
 }
-public void setBirthday(int birthday) {
+public void setBirthday(String birthday) {
 	Birthday = birthday;
 }
 public int getPhoneNumber() {

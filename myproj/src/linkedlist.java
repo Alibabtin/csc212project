@@ -26,15 +26,15 @@ public void update(T e) {
 }
 @Override
 public void insert(T e) {
-	Node<T> tmp;
+	Node<T> tmp =  new Node<T>(e);
 	if(search(e)) {
 		System.out.println("the contact is there");
 		return ;}
 	if(head==null)
-		head=current=new Node<T>(e);
+		head=current=tmp;
 	else {
 		tmp=current.next;
-		current.next=new Node<T>(e);
+		current.next=tmp;
 		current=current.next;
 		current.next=tmp;
 		
@@ -69,49 +69,9 @@ public boolean last() {
 public boolean empty() {
 	return head==null;
 }
-public Contact searcbyname(T e) { // changed searchbyname to return Contact
-	Node<T> tmp=head;
-	Node<T>Searchdata= new Node<T>(e);
-	while(tmp!=null) {
-		if(((Contact)tmp.data).getContactName()==((Contact)Searchdata.data).getContactName()) 
-			return (Contact) tmp.data;
-		tmp=tmp.next;}
-	return null;
-}
-public boolean searchbyeamil(T e) {
-	Node<T> tmp=head;
-	Node<T>Searchdata= new Node<T>(e);
-	while(tmp!=null) {
-		if(((Contact)tmp.data).getEmailAddress()==((Contact)Searchdata.data).getEmailAddress()) 
-			return true;
-		tmp=tmp.next;}
-	return false;
-}
-public boolean searchbyAdress(T e) {
-	Node<T> tmp=head;
-	Node<T>Searchdata= new Node<T>(e);
-	while(tmp!=null) {
-		if(((Contact)tmp.data).getAddress()==((Contact)Searchdata.data).getAddress()) 
-			return true;
-		tmp=tmp.next;}
-	return false;
-}
-public boolean searchbyBirthday(T e) {
-	Node<T> tmp=head;
-	Node<T>Searchdata= new Node<T>(e);
-	while(tmp!=null) {
-		if(((Contact)tmp.data).getBirthday()==((Contact)Searchdata.data).getBirthday()) 
-			return true;
-		tmp=tmp.next;}
-	return false;
-}
-public boolean searchbyphone(T e) {
-	Node<T> tmp=head;
-	Node<T>Searchdata= new Node<T>(e);
-	while(tmp!=null) {
-		if(((Contact)tmp.data).getPhoneNumber()==((Contact)Searchdata.data).getPhoneNumber()) 
-			return true;
-		tmp=tmp.next;}
+@Override
+public boolean search(T e) { // make search please
+	// TODO Auto-generated method stub
 	return false;
 }
 

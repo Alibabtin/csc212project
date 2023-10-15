@@ -1,7 +1,6 @@
 
 public class Event implements Comparable<Event>{
 	private String Title;
-	
 	private String DateTime;
 	private String Location;
 	private Contact Contactinvolved;
@@ -46,6 +45,7 @@ public class Event implements Comparable<Event>{
 	public void display() {
 		System.out.println("Event title:"+Title);
 		System.out.println("Contact name:"+Contactinvolved.getContactName());
+		System.out.println("Event date and time:"+DateTime);
 		System.out.println("Event location:"+Location);
 	
 }

@@ -116,14 +116,15 @@ public boolean empty() {
 	return head==null;
 }
 
-
-public boolean searchC(T C) {
+//check millon time;
+public boolean searchC(T C) {// we change from T to String
 	Node<T> tmp=head;
 	Node<T>Searchdata= new Node<T>(C);
 	if(head==null) {
 		return false;
 	}
 	while(tmp!=null) {
+	//	if(((Contact)tmp.getData()).getContactName().compareTo(C)==0)
 		if((((Contact)Searchdata.getData()).getContactName()).compareTo(((Contact)tmp.getData()).getContactName())==0)
 			return true;
 		tmp=tmp.next;}

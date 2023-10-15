@@ -1,5 +1,5 @@
 
-public class Event {
+public class Event implements Comparable<Event>{
 	private String Title;
 	private String Date;
 	private String Time;
@@ -47,6 +47,10 @@ public class Event {
 	}
 	public void setContactinvolved(Contact contactinvolved) {
 		Contactinvolved = contactinvolved;
+	}
+	@Override
+	public int compareTo(Event o) {
+		return Title.compareTo(o.Title);
 	}
 	
 	
